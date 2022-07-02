@@ -1,0 +1,12 @@
+<div *ngFor="let item of news" class="card text-center" style="width: 500px;">
+    <div class="card-header">
+      {{ item.title }}
+      <a href="#" (click)="archiveNews(item)" class="btn btn-primary">...</a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ item.description }}</h5>
+      <p class="card-text"><small class="text-muted">{{ item.date | date:'medium' }}</small></p>
+      <p class="card-text">{{ item.content }}</p>
+      <cite title="Source Title">{{ item.author }}</cite>
+    </div>
+</div>
