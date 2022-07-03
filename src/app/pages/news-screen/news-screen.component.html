@@ -1,5 +1,7 @@
 <h1 class="text-center mt-4">Last News</h1>
 
-<div *ngIf="news">
-    <app-news [news]="news"></app-news>
+<div *ngIf="news" class="d-flex justify-content-center">
+    <app-news (getNews)="reloadPage($event)" [news]="news"></app-news>
 </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" ></p></ngx-spinner>

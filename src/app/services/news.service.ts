@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as moment from 'moment';
 import { map } from 'rxjs/operators';
+import { News } from '../interfaces/news';
 import { NewsResponse } from '../interfaces/news-response';
 
 @Injectable({
@@ -20,13 +20,23 @@ export class NewsService {
       }));
   }
 
-  getNewsArchived() {
-    return this.http.get(`${this.URL}/news`)
+  getArchivedNews() {
+    return this.http.get(`${this.URL}/news/archived`)
+      .pipe( map( ( res: NewsResponse ) => {
+        return res.news;
+      }));
   }
 
-  archiveNews( news ) {
+  postNews( news: News ) {
+    return this.http.post(`${this.URL}/news`, news);
+  }
 
-    return this.http.put(`${this.URL}/news/${news._id}`, { ...news} );
+  putNews( news: News ) {
+    return this.http.put(`${this.URL}/news/${news._id}`, news );
+  }
+
+  deleteNews( news: News ) {
+    return this.http.delete(`${this.URL}/news/${news._id}`);
   }
 
 }

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 import { PagesModule } from './pages/pages.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

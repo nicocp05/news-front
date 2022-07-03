@@ -1,7 +1,8 @@
-<div *ngFor="let item of news" class="card text-center" style="width: 500px;">
+<div *ngFor="let item of news" class="card text-center mt-5" style="width: 500px;">
     <div class="card-header">
       {{ item.title }}
-      <a href="#" (click)="archiveNews(item)" class="btn btn-primary">...</a>
+      <a *ngIf="item.archiveDate == null" (click)="archiveNews(item)" class="btn btn-primary">Archive</a>
+      <a *ngIf="item.archiveDate != null" (click)="deleteNews(item)" class="btn btn-danger">Delete</a>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ item.description }}</h5>

@@ -1,0 +1,23 @@
+<h1 class="text-center mt-4">Add News</h1>
+
+<div class="d-flex justify-content-center mt-3">
+  <form [formGroup]="addNewsForm" style="width: 400px;">
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" placeholder="Title news" formControlName="title">
+      <p class="text-danger" *ngIf="fieldNotValid('title')">* Title is required</p>
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" placeholder="Description news" formControlName="description">
+      <p class="text-danger" *ngIf="fieldNotValid('description')">* Description is required</p>
+    </div>
+    <div class="form-group mt-3">
+      <textarea class="form-control" placeholder="Content news" formControlName="content"></textarea>
+      <p class="text-danger" *ngIf="fieldNotValid('content')">* Content is required</p>
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" placeholder="Author news" formControlName="author">
+      <p class="text-danger" *ngIf="fieldNotValid('author')">* Author is required</p>
+    </div>
+    <button type="submit" (click)="createNews()" class="btn btn-primary mt-3">Create news</button>
+  </form>
+</div>
