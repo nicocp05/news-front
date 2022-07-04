@@ -26,14 +26,32 @@ export class NewsComponent implements OnInit {
       ...news,
       archiveDate: Number(now)
     }
+
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, archived it',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    }).then((result) => {
+      if(result.value) {
+        this.newsService.putNews( archivedNews )
+          .subscribe( res => {
+            console.log( res );
+            this.getNews.emit();
+          }, err => {
+            console.log(err);
+          });
+      }
+    });
     
-    this.newsService.putNews( archivedNews )
-      .subscribe( res => {
-        console.log( res );
-        this.getNews.emit();
-      }, err => {
-        console.log(err);
-      });
 
   }
 

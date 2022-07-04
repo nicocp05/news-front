@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -12,15 +13,22 @@ export class AddNewsComponent implements OnInit {
 
   public addNewsForm: FormGroup;
 
-  private formSubmitted: boolean = false;
+  private formSubmitted: boolean;
 
   constructor( 
-              private fb: FormBuilder,
               private newsService: NewsService,
-              private router: Router
-               ) { }
+              private fb: FormBuilder,
+              private router: Router,
+              private spinner: NgxSpinnerService
+               ) 
+               { 
+
+                this.formSubmitted = false;
+
+               }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.createForm();
   }
 
@@ -31,6 +39,9 @@ export class AddNewsComponent implements OnInit {
       content: ['', Validators.required],
       author: ['', Validators.required]
     });
+    setInterval(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   public createNews() {
@@ -43,8 +54,9 @@ export class AddNewsComponent implements OnInit {
       this.newsService.postNews( this.addNewsForm.value )
         .subscribe( res => {
           console.log(res);
-          this.addNewsForm.reset();
-          this.router.navigateByUrl('/');
+            this.formSubmitted = false;
+            this.addNewsForm.reset();
+            this.router.navigateByUrl('/');
         }, err => {
           console.log(err);
         });
