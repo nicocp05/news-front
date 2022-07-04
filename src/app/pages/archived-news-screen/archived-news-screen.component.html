@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4">Archived News</h1>
 
-<div *ngIf="news" class="d-flex justify-content-center">
+<div *ngIf="news">
     <app-news (getNews)="reloadPage($event)" [news]="news"></app-news>
 </div>
 

@@ -1,14 +1,16 @@
-<div *ngFor="let item of news" class="card text-center mt-5" style="width: 500px;">
-    <div class="card-header d-flex">
-      <p>{{ item.title }}</p>
-      <a *ngIf="item.archiveDate == null" (click)="archiveNews(item)" class="btn btn-primary ms-auto">Archive</a>
-      <a *ngIf="item.archiveDate != null" (click)="deleteNews(item)" class="btn btn-danger ms-auto">Delete</a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ item.description }}</h5>
-      <p *ngIf="item.archiveDate == null" class="card-text"><small class="text-muted">Date: {{ item.date | date:'medium' }}</small></p>
-      <p *ngIf="item.archiveDate != null" class="card-text"><small class="text-muted">Archived: {{ item.archiveDate | date:'medium' }}</small></p>
-      <p class="card-text">{{ item.content }}</p>
-      <cite title="Source Title">{{ item.author }}</cite>
-    </div>
+<div *ngFor="let item of news" class="d-flex justify-content-center">
+  <div class="card text-center mt-5" style="width: 50%;">
+      <div class="card-header d-flex">
+        <p>{{ item.title }}</p>
+        <a *ngIf="item.archiveDate == null" (click)="archiveNews(item)" class="btn btn-primary ms-auto">Archive</a>
+        <a *ngIf="item.archiveDate != null" (click)="deleteNews(item)" class="btn btn-danger ms-auto">Delete</a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ item.description }}</h5>
+        <p *ngIf="item.archiveDate == null" class="card-text"><small class="text-muted">Date: {{ item.date | date:'medium' }}</small></p>
+        <p *ngIf="item.archiveDate != null" class="card-text"><small class="text-muted">Archived: {{ item.archiveDate | date:'medium' }}</small></p>
+        <p class="card-text">{{ item.content }}</p>
+        <cite title="Source Title">{{ item.author }}</cite>
+      </div>
+  </div>
 </div>
