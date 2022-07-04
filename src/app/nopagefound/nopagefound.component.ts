@@ -9,6 +9,4 @@ export class NopagefoundComponent {
 
   constructor() { }
 
-  year = new Date().getFullYear();
-
 }

@@ -6,11 +6,11 @@ import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-news-screen',
   templateUrl: './news-screen.component.html',
-  styleUrls: ['./news-screen.component.css']
+  styles: []
 })
 export class NewsScreenComponent implements OnInit {
 
-  news: News[] = [];
+  public news: News[] = [];
 
   constructor( 
               private newsService: NewsService,
@@ -21,11 +21,11 @@ export class NewsScreenComponent implements OnInit {
     this.getNews();
   }
 
-  reloadPage() {
+  public reloadPage() {
     this.getNews();
   }
 
-  getNews() {
+  public getNews() {
     this.spinner.show();
     this.newsService.getNews()
       .subscribe( (res: News[]) => {

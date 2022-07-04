@@ -6,11 +6,11 @@ import { NewsService } from 'src/app/services/news.service';
 @Component({
   selector: 'app-archived-news-screen',
   templateUrl: './archived-news-screen.component.html',
-  styleUrls: ['./archived-news-screen.component.css']
+  styles: []
 })
 export class ArchivedNewsScreenComponent implements OnInit {
 
-  news: News[] = [];
+  public news: News[] = [];
 
   constructor( 
               private newsService: NewsService,
@@ -21,11 +21,11 @@ export class ArchivedNewsScreenComponent implements OnInit {
     this.getArchivedNews();
   }
 
-  reloadPage() {
+  public reloadPage() {
     this.getArchivedNews();
   }
 
-  getArchivedNews() {
+  private getArchivedNews() {
     this.spinner.show();
     this.newsService.getArchivedNews()
       .subscribe( (res: News[]) => {  

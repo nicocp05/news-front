@@ -13,29 +13,29 @@ export class NewsService {
 
   constructor( private http: HttpClient ) { }
 
-  getNews() {
+  public getNews() {
     return this.http.get(`${this.URL}/news`)
       .pipe( map( ( res: NewsResponse ) => {
         return res.news;
       }));
   }
 
-  getArchivedNews() {
+  public getArchivedNews() {
     return this.http.get(`${this.URL}/news/archived`)
       .pipe( map( ( res: NewsResponse ) => {
         return res.news;
       }));
   }
 
-  postNews( news: News ) {
+  public postNews( news: News ) {
     return this.http.post(`${this.URL}/news`, news);
   }
 
-  putNews( news: News ) {
+  public putNews( news: News ) {
     return this.http.put(`${this.URL}/news/${news._id}`, news );
   }
 
-  deleteNews( news: News ) {
+  public deleteNews( news: News ) {
     return this.http.delete(`${this.URL}/news/${news._id}`);
   }
 

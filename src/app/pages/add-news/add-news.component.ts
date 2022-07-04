@@ -6,13 +6,13 @@ import { NewsService } from 'src/app/services/news.service';
 @Component({
   selector: 'app-add-news',
   templateUrl: './add-news.component.html',
-  styleUrls: ['./add-news.component.css']
+  styles: []
 })
 export class AddNewsComponent implements OnInit {
 
-  addNewsForm: FormGroup;
+  public addNewsForm: FormGroup;
 
-  formSubmitted: boolean = false;
+  private formSubmitted: boolean = false;
 
   constructor( 
               private fb: FormBuilder,
@@ -24,7 +24,7 @@ export class AddNewsComponent implements OnInit {
     this.createForm();
   }
 
-  createForm() {
+  private createForm() {
     this.addNewsForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -33,7 +33,7 @@ export class AddNewsComponent implements OnInit {
     });
   }
 
-  createNews() {
+  public createNews() {
 
     this.formSubmitted = true;
     
@@ -52,7 +52,7 @@ export class AddNewsComponent implements OnInit {
 
   }
   
-  fieldNotValid( field: string ) {
+  public fieldNotValid( field: string ) {
 
     if( this.addNewsForm.get(field).invalid && this.formSubmitted ) {
       return true;

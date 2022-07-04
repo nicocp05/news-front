@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styles: []
 })
 export class NewsComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  archiveNews( news: News ) {
+  public archiveNews( news: News ) {
 
     const now = Date.now();
 
@@ -37,7 +37,7 @@ export class NewsComponent implements OnInit {
 
   }
 
-  deleteNews( news: News ) {
+  public deleteNews( news: News ) {
 
     Swal.fire({
       title: 'Are you sure?',
