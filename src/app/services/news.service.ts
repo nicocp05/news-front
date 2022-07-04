@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { News } from '../interfaces/news';
 import { NewsResponse } from '../interfaces/news-response';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
 
-  URL: string = 'http://localhost:3000';
+  URL: string = environment.base_url;
 
   constructor( private http: HttpClient ) { }
 
