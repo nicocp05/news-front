@@ -1,5 +1,10 @@
 <h1 class="text-center mt-4">Last News</h1>
 
+<div *ngIf="news.length == 0" class="d-flex justify-content-center mt-4">
+    <p>No news added yet.</p>
+    <a routerLink="/add-news" class="btn btn-primary ms-3">Create News</a>
+</div>
+
 <div *ngIf="news">
     <app-news (getNews)="reloadPage($event)" [news]="news"></app-news>
 </div>

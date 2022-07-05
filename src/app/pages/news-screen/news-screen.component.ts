@@ -35,7 +35,9 @@ export class NewsScreenComponent implements OnInit {
         }, 500);
       }, err => {
         console.log(err);
+        this.spinner.hide();  
       });
+      
   }
 
 }
